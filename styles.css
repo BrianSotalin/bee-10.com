@@ -1,0 +1,183 @@
+/* Definir la variable de color */
+:root {
+    --color-principal: #0C070F;  /* Azul */
+    --color-secundario: #EA9E1A; /* Verde */
+  }
+  
+
+  html {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background-color: #fefaf1; /* blanco hueso */
+    font-family: "MuseoModerno", sans-serif;
+  }
+  
+  /* Barra de navegación */
+.navbar {
+    background-color: rgba(0, 0, 0, 0); /* Fondo transparente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  }
+  .navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo sólido al hacer scroll */
+ 
+  }
+  
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .navbar li {
+    display: inline;
+  }
+  
+  .navbar a {
+    color: white;
+    /*padding: 14px 20px;*/
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .navbar a:hover {
+    color: var(--color-secundario);
+  }
+  .scroll-button {
+    text-align: center;
+    margin-top: -40px;
+    position: relative;
+    z-index: 5;
+  }
+  
+  .btn-scroll img {
+    width: 40px; /* tamaño del ícono */
+    height: auto;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+  }
+  
+  .btn-scroll img:hover {
+    transform: scale(1.2);
+  }
+  
+  
+  .contenedor-spline {
+    width: 100%;
+    height: 100vh; /* altura de toda la pantalla */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .contenedor-spline iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+  
+  /* Estilos del contenido */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1.25rem;
+    font-family: "MuseoModerno", sans-serif;
+  }
+.container h1{
+  font-family: "MuseoModerno", sans-serif;
+  text-align: center;
+  color:var(--color-secundario);
+}
+  .content {
+    display: flex;
+    justify-content: space-between; /* Alinea el texto a la izquierda y la imagen a la derecha */
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  
+  .text-section {
+    align-items: center;
+    width: 50%; /* Esto permite que el texto ocupe un 60% del contenedor */
+  }
+  
+  
+  img {
+    width: 100%;
+    max-width: 31.25rem;
+    border-radius: 1.25rem;
+  }
+  
+  
+  .content img{
+    width: 50%;
+    height: 50vh;
+  }
+  /*BOTON UP*/
+  .btn-up {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: var(--color-principal);
+    color: white;
+    padding: 7px 10px ;
+    border-radius: 50%;
+    text-decoration: none;
+    display: none; /* Oculto por defecto */
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .btn-up img {
+    width: 40px; /* tamaño del ícono */
+    height: auto;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+  }
+  .btn-up img:hover {
+    transform: scale(1.2);
+  }
+  
+
+/*FOOTER*/
+  .footer {
+    margin-top: 3.125rem;
+    background-color: var(--color-principal); /* Fondo oscuro */
+    font-family: "MuseoModerno", sans-serif;
+    color: white; /* Texto blanco */
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Centrado del texto */
+   width: 100%;
+    padding: 1.25rem; /* Espaciado alrededor */
+    font-size: 0.8rem; /* Tamaño de fuente pequeño */
+  }
+  .footer #quote{
+   
+    color: var(--color-secundario);
+  
+  }
+ 
+  .footer p {
+    margin-top: 1rem; /* Elimina los márgenes predeterminados */
+  }
+  .footer .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem; /* Espacio entre los elementos */
+  }  
