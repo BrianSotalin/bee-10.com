@@ -6,8 +6,10 @@
   
 
   html {
-    height: 100%;
-    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  *, *::before, *::after {
+    box-sizing: inherit;
   }
   
   body {
@@ -83,11 +85,12 @@
   }
   
   .contenedor-spline iframe {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     border: none;
     display: block;
   }
+
   
   /* Estilos del contenido */
 .container {
@@ -182,51 +185,69 @@
     gap: 0.625rem; /* Espacio entre los elementos */
   }  
   
-@media (max-width: 850px) {
-  .navbar ul {
+  @media (max-width: 850px) {
+    .navbar ul {
+      
+     font-size: 1rem;
+    }
+  
+
+    .content {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  .text-section{
+    width: 100%;
+  }
+    .text-section,
+    .content img {
+      width: 100%;
+      height: auto;
+    }
+  .contenedor-spline{
+    width: 100%;
+  }
+
+  
+    button {
+      width: 100%;
+      padding: 1rem 1rem;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
+  
+    .container {
+      width: 100%;
+      padding: 0.625rem;
+    }
+    .footer{
+      width: 100%;
+    }
+  }
+  /* Media Query para dispositivos muy pequeños (por ejemplo, teléfonos antiguos) */
+  @media screen and (max-width: 480px) {
+    .contenedor-spline {
+      width: 100%;
+      height: 100vh; /* altura de toda la pantalla */
+      background-color: black;
+    }
     
-   font-size: 1.5rem;
+    .contenedor-spline iframe {
+      width: 100vw;
+      height: 50vh;
+    }
+  
+    .navbar a {
+      padding: 0.25rem 0.5rem; /* Ajustar el padding de los enlaces en el navbar */
+      font-size: 1rem;
+    }
+  .btn-up{
+    bottom: 1rem;
+    right: 1rem;
   }
-
-  .content {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  
+    .footer {
+      font-size: 0.75rem; /* Ajuste aún más pequeño en dispositivos pequeños */
+    }
   }
-.text-section{
-  width: 100%;
-}
-  .text-section,
-  .content img {
-    width: 100%;
-    height: auto;
-  }
-
-  button {
-    width: 100%;
-    padding: 1rem 1rem;
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
-  }
-
-  .container {
-    width: 100%;
-    padding: 0.625rem;
-  }
-  .footer{
-    width: 100%;
-  }
-}
-/* Media Query para dispositivos muy pequeños (por ejemplo, teléfonos antiguos) */
-@media screen and (max-width: 480px) {
-
-
-  .navbar a {
-    padding: 0.25rem 0.5rem; /* Ajustar el padding de los enlaces en el navbar */
-  }
-
-
-  .footer {
-    font-size: 0.75rem; /* Ajuste aún más pequeño en dispositivos pequeños */
-  }
-}
