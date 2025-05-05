@@ -181,3 +181,54 @@
     align-items: center;
     gap: 0.625rem; /* Espacio entre los elementos */
   }  
+  
+@media (max-width: 850px) {
+  .navbar ul {
+    
+   font-size: 1.5rem;
+  }
+
+
+  .content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+.text-section{
+  width: 100%;
+}
+  .text-section,
+  .content img {
+    width: 100%;
+    height: auto;
+  }
+
+
+  button {
+    width: 100%;
+    padding: 1rem 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0.625rem;
+  }
+  .footer{
+    width: 100%;
+  }
+}
+/* Media Query para dispositivos muy pequeños (por ejemplo, teléfonos antiguos) */
+@media screen and (max-width: 480px) {
+
+
+  .navbar a {
+    padding: 0.25rem 0.5rem; /* Ajustar el padding de los enlaces en el navbar */
+  }
+
+
+  .footer {
+    font-size: 0.75rem; /* Ajuste aún más pequeño en dispositivos pequeños */
+  }
+}
