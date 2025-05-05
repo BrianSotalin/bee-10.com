@@ -188,7 +188,6 @@
    font-size: 1.5rem;
   }
 
-
   .content {
     flex-direction: column;
     justify-content: center;
@@ -202,7 +201,6 @@
     width: 100%;
     height: auto;
   }
-
 
   button {
     width: 100%;
