@@ -14,6 +14,50 @@ const btn = document.getElementById('btnUp');
       btn.style.display = 'none';
     }
   };
- 
+ //cargar imagenes dinamicamente dependiendo de su data-type
+  const circles = document.querySelectorAll('#projects .circle');
+
+  circles.forEach(circle => {
+    const type = circle.dataset.type;
+    let imgSrc = '';
+  
+    switch(type) {
+      case 'app':
+        imgSrc = 'images/mobile.svg';
+        break;
+      case 'web':
+        imgSrc = 'images/web.svg';
+        break;
+      case 'api':
+        imgSrc = 'images/api-rest.svg';
+        break;
+    }
+  
+    const img = document.createElement('img');
+    img.src = imgSrc;
+    img.alt = `Icono ${type}`;
+    circle.appendChild(img);
+  });
+
+  ///actualizar contenedores en la url
+  const sections = document.querySelectorAll('#home, div.container');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+          history.replaceState(null, null, `#${id}`);
+      }
+    });
+  }, {
+    threshold: 0.4 // Se actualiza cuando el 40% de la sección está visible
+  });
+  
+  sections.forEach(section => {
+    if (section.id) {
+      observer.observe(section);
+    }
+  });
+  
 
 

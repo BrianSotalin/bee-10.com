@@ -2,6 +2,7 @@
 :root {
     --color-principal: #0C070F;  /* Azul */
     --color-secundario: #EA9E1A; /* Verde */
+    --color-terciario: #414059;
   }
   
 
@@ -60,13 +61,13 @@
   }
   .scroll-button {
     text-align: center;
-    margin-top: -40px;
+    margin-top: -2.5rem;
     position: relative;
     z-index: 5;
   }
   
   .btn-scroll img {
-    width: 40px; /* tamaño del ícono */
+    width: 2.5rem; /* tamaño del ícono */
     height: auto;
     transition: transform 0.4s ease;
     cursor: pointer;
@@ -129,14 +130,59 @@
     width: 50%;
     height: 50vh;
   }
+  /*PROJECT*/
+  #projects,#social-media {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .circle-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem; /* espacio entre círculos */
+    margin-top: 2rem;
+    flex-wrap: wrap; /* permite que se ajusten en pantallas pequeñas */
+  }
+  #projects .circle {
+    width: 12.5rem;
+    height: 12.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #fff;
+    background-color: var(--color-principal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  #social-media .circle {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #fff;
+    background-color: var(--color-terciario);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .circle img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    cursor: pointer;
+  }
+  
+  
   /*BOTON UP*/
   .btn-up {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 2.5rem;
+    right: 2.5rem;
     background-color: var(--color-principal);
     color: white;
-    padding: 7px 10px ;
+    padding: 0.438rem 0.625rem ;
     border-radius: 50%;
     text-decoration: none;
     display: none; /* Oculto por defecto */
@@ -146,7 +192,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
   .btn-up img {
-    width: 40px; /* tamaño del ícono */
+    width: 2.5rem; /* tamaño del ícono */
     height: auto;
     transition: transform 0.4s ease;
     cursor: pointer;
@@ -231,6 +277,8 @@
       width: 100%;
       height: 100vh; /* altura de toda la pantalla */
       background-color: black;
+      display: flex;
+      align-items: center;     /*centra verticalmente*/
     }
     
     .contenedor-spline iframe {
@@ -242,9 +290,18 @@
       padding: 0.25rem 0.5rem; /* Ajustar el padding de los enlaces en el navbar */
       font-size: 1rem;
     }
+    .btn-scroll img {
+      width: 2rem; /* tamaño del ícono */
+ 
+    }
   .btn-up{
     bottom: 1rem;
     right: 1rem;
+    padding: 0.25rem 0.438rem ;
+  }
+
+  .btn-up img {
+    width: 2rem; /* tamaño del ícono */
   }
   
     .footer {
