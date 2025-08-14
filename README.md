@@ -1,71 +1,68 @@
-🌐 Aplicación Web Estática con S3 y CloudFront
-Este proyecto describe la configuración para alojar una aplicación web estática de alto rendimiento y bajo costo utilizando Amazon S3 para el almacenamiento y Amazon CloudFront como red de entrega de contenido (CDN).
+# 🚀 Despliegue de Aplicación Web Estática en AWS
 
-Esta arquitectura es ideal para sitios web que no requieren una lógica de servidor backend, como blogs, portfolios, landing pages o documentación de proyectos.
+Este proyecto es una guía detallada para desplegar una **aplicación web estática** de forma eficiente y segura utilizando los servicios de Amazon Web Services (AWS) **S3** y **CloudFront**.
 
-🚀 Características Principales
-Alojamiento de Alto Rendimiento: Utiliza CloudFront para distribuir tu contenido desde ubicaciones geográficas cercanas a tus usuarios, reduciendo la latencia y mejorando la velocidad de carga.
+Ideal para proyectos como portfolios, blogs, páginas de aterrizaje o cualquier sitio que no requiera un backend dinámico.
 
-Seguridad Mejorada: CloudFront permite configurar HTTPS para todas las solicitudes y proteger tu sitio contra ataques DDoS.
+## ✨ Características de la Arquitectura
 
-Escalabilidad y Durabilidad: Amazon S3 ofrece un almacenamiento de objetos extremadamente duradero y escalable, capaz de manejar grandes cantidades de tráfico sin problemas.
+  * **Velocidad Global:** CloudFront actúa como una CDN (Content Delivery Network), distribuyendo tu contenido a través de una red de servidores de borde para ofrecerlo a tus usuarios con la menor latencia posible. 🌍
 
-Optimización de Costos: Paga únicamente por el almacenamiento y la transferencia de datos que consumes.
+  * **Almacenamiento Confiable:** S3 es un servicio de almacenamiento de objetos con alta durabilidad y disponibilidad, garantizando que tus archivos estén siempre accesibles. 🛡️
 
-Control de Versiones y Caché: Gestiona las actualizaciones de tu sitio subiendo nuevos archivos a S3 e invalidando el caché de CloudFront para que los cambios se reflejen al instante.
+  * **Seguridad y Cifrado:** CloudFront permite la configuración de HTTPS, protegiendo la comunicación entre tus usuarios y tu sitio. 🔒
 
-🛠️ Tecnologías Utilizadas
-Amazon S3: Servicio de almacenamiento de objetos.
+  * **Costo-Efectividad:** La arquitectura de "pago por uso" de AWS significa que solo pagas por el almacenamiento y el ancho de banda que realmente utilizas. 💰
 
-Amazon CloudFront: Red de entrega de contenido (CDN).
+  * **Control Total:** Podrás gestionar las actualizaciones de tu sitio subiendo nuevos archivos y controlando el caché de CloudFront con facilidad. 🔄
 
-AWS CLI: Para la automatización y gestión de los recursos de AWS desde la línea de comandos.
+## 🛠️ Tecnologías Utilizadas
 
-⚙️ Pasos de Configuración y Despliegue
-Requisitos Previos
-Una cuenta de AWS activa.
+  * **Amazon S3:** El bucket que almacena todos tus archivos estáticos.
 
-Tu aplicación web estática completa (archivos index.html, CSS, JavaScript, imágenes, etc.).
+  * **Amazon CloudFront:** La CDN que sirve tu sitio web a nivel global.
 
-La AWS CLI instalada y configurada (opcional, pero recomendada).
+  * **AWS CLI:** La herramienta de línea de comandos para automatizar y gestionar el despliegue.
 
-1. Preparar el Bucket S3
-Crea un nuevo bucket de S3. El nombre del bucket debería ser único a nivel global.
+## ⚙️ Guía de Despliegue
 
-Sube todos los archivos de tu aplicación web estática a este bucket.
+Sigue estos pasos para poner tu aplicación en línea:
 
-Configura el bucket para alojamiento de sitios web estáticos y establece tu index.html como documento de índice y de error.
+### 1\. Prepara tu Bucket S3
 
-2. Configurar la Distribución de CloudFront
-Crea una nueva distribución de CloudFront.
+1.  Crea un nuevo bucket de S3 con un nombre único.
 
-En Origen, selecciona tu bucket S3 de la lista desplegable.
+2.  Sube todos los archivos de tu proyecto (HTML, CSS, JS, imágenes, etc.) a la raíz del bucket.
 
-Es altamente recomendado crear un Origen Access Control (OAC) para restringir el acceso directo al bucket S3 y obligar a que todo el tráfico pase por CloudFront.
+3.  Habilita el **alojamiento de sitios web estáticos** en la configuración del bucket y especifica tu `index.html` como documento principal.
 
-Elige tus opciones de caché y precios.
+### 2\. Configura CloudFront
 
-Configura un certificado SSL/TLS (puedes crearlo con AWS Certificate Manager de forma gratuita) para habilitar HTTPS.
+1.  Crea una nueva distribución de CloudFront.
 
-Una vez que la distribución esté desplegada (puede tardar unos minutos), recibirás un nombre de dominio de CloudFront que será la URL de tu sitio.
+2.  Selecciona tu bucket de S3 como el **Origen**.
 
-3. Subida y Actualización del Contenido
-Para subir nuevos archivos o actualizar tu aplicación:
+3.  Crea un **Origen Access Control (OAC)** para asegurarte de que el tráfico solo llegue a tu bucket a través de CloudFront.
 
-Sube los archivos actualizados a tu bucket S3.
+4.  Asocia un certificado SSL/TLS (creado en AWS Certificate Manager) para activar HTTPS.
 
-Si deseas que los cambios sean visibles de inmediato, debes invalidar el caché de CloudFront.
+5.  Una vez desplegada la distribución, utiliza el **nombre de dominio de CloudFront** para acceder a tu sitio.
 
-Invalidar Caché con AWS CLI
-La forma más sencilla de invalidar el caché es a través de la línea de comandos. Esto borra los archivos almacenados en los puntos de borde de CloudFront, forzando a CloudFront a buscar la versión más reciente en tu bucket S3.
+### 3\. Actualiza tu Contenido
 
+Para publicar nuevos cambios, sube los archivos actualizados a tu bucket S3. Luego, crea una invalidación de caché para que CloudFront sirva la nueva versión:
+
+```
 aws cloudfront create-invalidation --distribution-id TU_ID_DE_DISTRIBUCION_CLOUDFRONT --paths "/*"
 
-Reemplaza TU_ID_DE_DISTRIBUCION_CLOUDFRONT con el ID de tu distribución de CloudFront. Puedes encontrar este ID en la consola de CloudFront.
+```
 
-📚 Recursos Útiles
-Guía oficial de alojamiento de sitios web estáticos en S3
+Reemplaza `TU_ID_DE_DISTRIBUCION_CLOUDFRONT` con el ID de tu distribución.
 
-Crear una distribución de CloudFront
+## 📚 Enlaces de Interés
 
-Documentación de la AWS CLI
+  * [Guía para alojar un sitio estático en S3](https://docs.aws.amazon.com/es_es/AmazonS3/latest/userguide/WebsiteHosting.html)
+
+  * [Crear una distribución de CloudFront](https://docs.aws.amazon.com/es_es/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+
+  * [Documentación de AWS CLI](https://aws.amazon.com/cli/)
